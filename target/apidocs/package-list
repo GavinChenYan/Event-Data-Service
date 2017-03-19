@@ -1,0 +1,4 @@
+com.globalData.controller
+com.globalData.dao
+com.globalData.dao.impl
+com.globalData.vo

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="dataType">
+ 
+    <resultMap id="result" type="DataType">
+        <result property="dataTypeCode" column="data_type_code"/>
+        <result property="dataTypeName" column="data_type_name"/>   
+    </resultMap>
+ 
+    <select id="selectAllTypies" resultMap="result">
+        SELECT * FROM data_type;
+    </select>
+ 
+    <select id="getTypeByCode" parameterType="String" resultMap="result">
+        SELECT * FROM data_type WHERE id = #{dataTypeCode}
+    </select>
+ 
+    <insert id="insert" parameterType="DataType">
+        INSERT INTO data_type (data_type_code, data_type_name) 
+        VALUES (#{dataTypeCode}, #{dataTypeName});
+    </insert>
+ 
+    <update id="update" parameterType="DataType">
+        UPDATE data_type
+        SET data_type_name = #{dataTypeName}
+        WHERE data_type_code = #{dataTypeCode} 
+    </update>
+ 
+    <delete id="delete" parameterType="String">
+        UPDATE data_type
+        SET active = 'N'
+        WHERE data_type_code = #{dataTypeCode} 
+    </delete>
+</mapper>
