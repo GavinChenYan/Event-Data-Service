@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class DividentData {
+public class DividentData implements BaseVo{
 	
 	private String companyName;
 	private String stockCode;
@@ -114,14 +114,22 @@ public class DividentData {
 		this.custodianReceiptDate = custodianReceiptDate;
 	}
 	
+	public Date getInputDate() {
+		return getRecordDate();
+	}
+	 
+	public String getJasonData() {
+		   ObjectMapper mapper = new ObjectMapper();
+		   String jsonValue = null;
+			try {
+				jsonValue = mapper.writeValueAsString(this);
+			} 	catch (Exception e) {
+				//TODO
+			}
+		   return jsonValue;
+
+	}
    public String toString() {
-	   ObjectMapper mapper = new ObjectMapper();
-	   String jsonValue = null;
-		try {
-			jsonValue = mapper.writeValueAsString(this);
-		} 	catch (Exception e) {
-			//TODO
-		}
-	   return jsonValue;
+	   return getJasonData();
    }
 }
