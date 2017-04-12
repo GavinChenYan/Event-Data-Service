@@ -3,6 +3,7 @@ package com.globalData.vo;
 import java.util.Date;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.globalData.util.JSonMapper;
 
 public class DividentData implements BaseVo{
 	
@@ -118,18 +119,6 @@ public class DividentData implements BaseVo{
 		return getRecordDate();
 	}
 	 
-	public String getJasonData() {
-		   ObjectMapper mapper = new ObjectMapper();
-		   String jsonValue = null;
-			try {
-				jsonValue = mapper.writeValueAsString(this);
-			} 	catch (Exception e) {
-				//TODO
-			}
-		   return jsonValue;
 
-	}
-   public String toString() {
-	   return getJasonData();
-   }
+
 }
